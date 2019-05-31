@@ -17,7 +17,7 @@ provider "oci" {
   user_ocid            = "${var.user_ocid}"
   fingerprint          = "${var.fingerprint}"
   private_key_path     = "${var.private_key_path}"
-  region               = "us-phoenix-1"
+  region               = "us-ashburn-1"
 }
 
 data "oci_identity_availability_domains" "ashburn" {
