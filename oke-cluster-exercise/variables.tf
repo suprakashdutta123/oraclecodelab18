@@ -55,7 +55,7 @@ variable "instance_shape" {
 }
 
 variable "cluster_kubernetes_version" {
-  default = "v1.11.1"
+  default = "v1.12.7"
 }
 
 variable "cluster_name" {
@@ -91,7 +91,7 @@ variable "node_pool_initial_node_labels_value" {
 }
 
 variable "node_pool_kubernetes_version" {
-  default = "v1.11.1"
+  default = "v1.12.7"
 }
 
 variable "node_pool_name" {
@@ -103,7 +103,7 @@ variable "node_pool_node_image_name" {
 }
 
 variable "node_pool_node_shape" {
-  default = "VM.Standard1.2"
+  default = "VM.Standard2.1"
 }
 
 variable "node_pool_quantity_per_subnet" {
