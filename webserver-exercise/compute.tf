@@ -1,5 +1,7 @@
 /* Instances */
 resource "oci_core_instance" "Webserver-AD1" {
+  
+
   availability_domain = "${lookup(data.oci_identity_availability_domains.ashburn.availability_domains[0],"name")}"
   compartment_id      = "${var.compartment_ocid}"
   display_name        = "Webserver-ASHBURN_AD1"
@@ -16,7 +18,7 @@ resource "oci_core_instance" "Webserver-AD1" {
     source_id   = "ocid1.image.oc1.iad.aaaaaaaaiu73xa6afjzskjwvt3j5shpmboxtlo7yw4xpeqpdz5czpde7px2a"
   }
 
-  metadata {
+  metadata = {
     ssh_authorized_keys = "${var.ssh_public_key}"
     user_data = "${base64encode(var.user-data)}"
   }
@@ -28,7 +30,10 @@ resource "oci_core_instance" "Webserver-AD1" {
 
 
 resource "oci_core_instance" "Webserver-AD2" {
-  availability_domain = "${lookup(data.oci_identity_availability_domains.ashburn.availability_domains[1],"name")}"
+
+ 
+
+ availability_domain = "${lookup(data.oci_identity_availability_domains.ashburn.availability_domains[1],"name")}"
   compartment_id      = "${var.compartment_ocid}"
   display_name        = "Webserver-AD2"
   shape               = "${var.instance_shape}"
@@ -44,7 +49,7 @@ resource "oci_core_instance" "Webserver-AD2" {
     source_id   = "ocid1.image.oc1.iad.aaaaaaaaiu73xa6afjzskjwvt3j5shpmboxtlo7yw4xpeqpdz5czpde7px2a"
   }
 
-  metadata {
+  metadata = {
     ssh_authorized_keys = "${var.ssh_public_key}"
     user_data = "${base64encode(var.user-data)}"
   }

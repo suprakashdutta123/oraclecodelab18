@@ -42,66 +42,84 @@ resource "oci_core_security_list" "sl_w" {
   compartment_id = "${var.compartment_ocid}"
   vcn_id         = "${oci_core_virtual_network.vcn_w.id}"
 
-  egress_security_rules = [{
+
+
+
+
+  egress_security_rules {
     protocol    = "all"
     destination = "0.0.0.0/0"
-  }]
+  } 
 
-  ingress_security_rules = [{
-    tcp_options {
-      "max" = 22
-      "min" = 22
-    }
 
-    protocol = "6"
-    source   = "0.0.0.0/0"
-  },
-    {
-      tcp_options {
-        "max" = 80
-        "min" = 80
-      }
 
-      protocol = "6"
-      source   = "0.0.0.0/0"
-    },
-    {
-      tcp_options {
-        "max" = 443
-        "min" = 443
-      }
 
-      protocol = "6"
-      source   = "0.0.0.0/0"
-    },
-    {
-      icmp_options {
-        "type" = 0
-      }
 
-      protocol = 1
-      source   = "0.0.0.0/0"
-    },
-    {
-      icmp_options {
-        "type" = 3
-        "code" = 4
-      }
+  ingress_security_rules  {
 
-      protocol = 1
-      source   = "0.0.0.0/0"
-    },
-    {
-      icmp_options {
-        "type" = 8
-      }
-
-      protocol = 1
-      source   = "0.0.0.0/0"
-    },
-  ]
+   
+        protocol = "6"
+        source = "0.0.0.0/0"
+  
+         tcp_options {
+             max = "22"
+              min = "22"
+          }
 }
 
+  ingress_security_rules {       
+           protocol="1"
+           source = "0.0.0.0/0"
+
+              icmp_options {
+               type  = "0"
+               }
+}
+
+  ingress_security_rules  {
+
+
+        protocol = "6"
+        source = "0.0.0.0/0"
+
+         tcp_options {
+             max = "80"
+              min = "80"
+          }
+}
+
+  ingress_security_rules {
+           protocol="1"
+           source = "0.0.0.0/0"
+
+              icmp_options {
+               type  = "3"
+               }
+}
+ 
+ ingress_security_rules  {
+
+
+        protocol = "6"
+        source = "0.0.0.0/0"
+
+         tcp_options {
+             max = "443"
+              min = "443"
+          }
+}
+
+  ingress_security_rules {
+           protocol="1"
+           source = "0.0.0.0/0"
+
+              icmp_options {
+               type  = "8"
+               }
+}
+
+
+}
 
 #### Subnet  #######
 
